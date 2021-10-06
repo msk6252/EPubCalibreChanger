@@ -1,0 +1,16 @@
+service: epub-calibre-changer
+
+provider:
+  name: aws
+
+functions:
+  changeFunction:
+    image: <ecr>
+    events:
+      - s3:
+          bucket: "epub-storage"
+          events:
+            - "s3:ObjectCreated:*"
+        
+    mamorySize: 1024
+
